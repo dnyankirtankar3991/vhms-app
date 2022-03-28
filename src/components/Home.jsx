@@ -1,20 +1,23 @@
 import React from "react";
 import { Grid, Button, Card, CardContent } from "@mui/material";
 import { Speedometer } from "./Speedometer";
+import { DriverEnroll } from "./DriverEnroll";
 
 export const Home = () => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={3}>
+      <Grid item xs={4}>
         <Card>
           <CardContent>
             <Speedometer />
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={8}>
         <Card>
-          <CardContent>PDAC JAN 22</CardContent>
+          <CardContent>
+            <DriverEnroll />
+          </CardContent>
         </Card>
       </Grid>
       <Grid item xs={3}>
