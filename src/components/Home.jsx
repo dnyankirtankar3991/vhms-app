@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Button, Card, CardContent } from "@mui/material";
 import { Speedometer } from "./Speedometer";
 import { DriverEnroll } from "./DriverEnroll";
+import { DpcItem } from "./DpcItem";
 
 export const Home = () => {
   return (
@@ -9,7 +10,7 @@ export const Home = () => {
       <Grid item xs={4}>
         <Card>
           <CardContent>
-            <Speedometer />
+            <DpcItem />
           </CardContent>
         </Card>
       </Grid>
@@ -20,9 +21,11 @@ export const Home = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={4}>
         <Card>
-          <CardContent>PDAC Mar 22</CardContent>
+          <CardContent>
+            <Speedometer />
+          </CardContent>
         </Card>
       </Grid>
       <Grid item xs={3}>

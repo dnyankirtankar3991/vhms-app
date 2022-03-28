@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, TextField } from "@mui/material";
+import { Grid, TextField, Button } from "@mui/material";
 
 export const DriverEnroll = () => {
   const [fname, setFname] = useState("");
@@ -16,6 +16,19 @@ export const DriverEnroll = () => {
   const [pan, setPan] = useState("");
   const [idproofs, setIdproofs] = useState("");
 
+  const handleRemove = () => {
+    setFname("");
+    setLname("");
+    setMname("");
+    setHno("");
+    setArea("");
+    setCity("");
+    setPin("");
+    setDl("");
+    setAadhar("");
+    setPan("");
+  };
+
   useEffect(() => {
     setFullname(`${fname} ${mname} ${lname}`);
     setAddress(`${hno}, ${area}, ${city} - ${pin}. `);
@@ -29,7 +42,13 @@ export const DriverEnroll = () => {
             label="First Name"
             variant="standard"
             value={fname}
-            onChange={(e) => setFname(e.target.value)}
+            required
+            onChange={(e) =>
+              setFname(
+                e.target.value.charAt(0).toUpperCase() +
+                  e.target.value.slice(1).toLowerCase()
+              )
+            }
           />
         </Grid>
         <Grid item xs={4}>
@@ -43,6 +62,7 @@ export const DriverEnroll = () => {
         <Grid item xs={4}>
           <TextField
             label="Last Name"
+            required
             variant="standard"
             value={lname}
             onChange={(e) => setLname(e.target.value)}
@@ -88,6 +108,7 @@ export const DriverEnroll = () => {
           <TextField
             variant="standard"
             label="Driving Licence"
+            required
             value={dl}
             onChange={(e) => setDl(e.target.value)}
           />
@@ -96,6 +117,7 @@ export const DriverEnroll = () => {
           <TextField
             variant="standard"
             label="Aadhar Card"
+            required
             value={aadhar}
             onChange={(e) => setAadhar(e.target.value)}
           />
@@ -109,9 +131,22 @@ export const DriverEnroll = () => {
           />
         </Grid>
       </Grid>
-      <h3>{fullname}</h3>
-      <p>{address}</p>
-      <p>{idproofs}</p>
+      <br />
+      <Grid container>
+        <Grid item xs={3}></Grid>
+        <Grid item xs={3}>
+          <Button variant="contained">Save</Button>
+        </Grid>
+        <Grid item xs={3}>
+          <Button variant="contained" onClick={handleRemove}>
+            Cancel
+          </Button>
+        </Grid>
+        <Grid item xs={3}></Grid>
+      </Grid>
+      {fname !== "" && lname !== "" && <h3>{fullname}</h3>}
+      {city !== "" && <p>{address}</p>}
+      {dl !== "" && aadhar !== "" && <p>{idproofs}</p>}
     </React.Fragment>
   );
 };
