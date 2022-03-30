@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Button, TextField } from "@mui/material";
+import { Grid, Button, TextField, Card, CardContent } from "@mui/material";
 
 export const Speedometer = () => {
   const [speed, setSpeed] = useState(0);
@@ -17,29 +17,33 @@ export const Speedometer = () => {
     }
   }, [speed]);
   return (
-    <React.Fragment>
-      <Grid container>
-        <Grid item xs={3}>
-          <Button variant="contained" onClick={() => setSpeed(speed - 5)}>
-            -
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <TextField value={speed} variant="outlined"></TextField>
-        </Grid>
-        <Grid item xs={3}>
-          <Button variant="contained" onClick={() => setSpeed(speed + 5)}>
-            +
-          </Button>
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={3}></Grid>
-        <Grid item xs={6}>
-          <div className="signal" style={{ backgroundColor: status }}></div>
-        </Grid>
-        <Grid item xs={3}></Grid>
-      </Grid>
-    </React.Fragment>
+    <Card>
+      <CardContent>
+        <React.Fragment>
+          <Grid container>
+            <Grid item xs={3}>
+              <Button variant="contained" onClick={() => setSpeed(speed - 5)}>
+                -
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField value={speed} variant="outlined"></TextField>
+            </Grid>
+            <Grid item xs={3}>
+              <Button variant="contained" onClick={() => setSpeed(speed + 5)}>
+                +
+              </Button>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={3}></Grid>
+            <Grid item xs={6}>
+              <div className="signal" style={{ backgroundColor: status }}></div>
+            </Grid>
+            <Grid item xs={3}></Grid>
+          </Grid>
+        </React.Fragment>
+      </CardContent>
+    </Card>
   );
 };

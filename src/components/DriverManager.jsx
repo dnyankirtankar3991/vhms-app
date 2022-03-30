@@ -1,18 +1,29 @@
-import React, { useState } from "react";
-import { Tab, Tabs } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Tab, Tabs, TextField, Card, CardContent } from "@mui/material";
 import { DpcList } from "./DpcList";
 import { DriverList } from "./DriverList";
+import { DriverEnroll } from "./DriverEnroll";
+import { Speedometer } from "./Speedometer";
+import { VehicalList } from "./VehicalList";
 
-export const DriverManager = ({ driverdata }) => {
+export const DriverManager = ({ driverdata, vehdata }) => {
   const [value, setValue] = useState("dpc");
+
   return (
     <React.Fragment>
       <Tabs value={value} onChange={(e, val) => setValue(val)}>
         <Tab value="dpc" label="DPC" />
-        <Tab value="dl" label="Drive List" />
+        <Tab value="dl" label="Driver List" />
+        <Tab value="denroll" label="Enrollment" />
+        <Tab value="speedo" label="Speedometer" />
+        <Tab value="vehlist" label="Vehical List" />
       </Tabs>
+
       {value === "dpc" && <DpcList driverdata={driverdata} />}
       {value === "dl" && <DriverList driverdata={driverdata} />}
+      {value === "denroll" && <DriverEnroll />}
+      {value === "speedo" && <Speedometer />}
+      {value === "vehlist" && <VehicalList vehdata={vehdata} />}
     </React.Fragment>
   );
 };

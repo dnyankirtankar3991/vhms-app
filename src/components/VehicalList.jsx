@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { DriverItem } from "./DriverItem";
+import { VehicalItem } from "./VehicalItem";
 import { TextField, Card, CardContent } from "@mui/material";
 
-export const DriverList = ({ driverdata }) => {
-  const [data, setData] = useState([...driverdata]);
+export const VehicalList = ({ vehdata }) => {
+  const [data, setData] = useState([...vehdata]);
   const [txtSrc, setTxtSrc] = useState("");
+
   useEffect(() => {
-    const filtered = driverdata.filter((item) =>
-      item.fname.toUpperCase().includes(txtSrc.toUpperCase())
+    const filtered = vehdata.filter((item) =>
+      item.toUpperCase().includes(txtSrc.toUpperCase())
     );
     setData([...filtered]);
   }, [txtSrc]);
@@ -16,13 +17,13 @@ export const DriverList = ({ driverdata }) => {
       <Card>
         <CardContent>
           <TextField
-            label="Search Driver"
+            label="Search Vehicle"
             onChange={(e) => setTxtSrc(e.target.value)}
           />
         </CardContent>
       </Card>
-      {data.map((item, index) => (
-        <DriverItem key={index} item={item} />
+      {data.map((item) => (
+        <VehicalItem item={item} />
       ))}
     </React.Fragment>
   );

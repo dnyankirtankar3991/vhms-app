@@ -29,25 +29,38 @@ export const Home = () => {
       local: 3,
       long: 3,
     },
+    {
+      fname: "Nitin",
+      mname: "Pandurang",
+      lname: "Sethe",
+      local: 4,
+      long: 2,
+    },
+    {
+      fname: "Pappu",
+      mname: "Hasan",
+      lname: "Shaikh",
+      local: 5,
+      long: 4,
+    },
+    {
+      fname: "Sameer",
+      mname: "Rauf",
+      lname: "Khan",
+      local: 3,
+      long: 5,
+    },
+  ]);
+  const [vehdata, setVehdata] = useState([
+    "MH-26 N2517",
+    "MH-21 P3517",
+    "MH-12 2517",
+    "AP-32 7677",
   ]);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <DriverManager driverdata={data} />
-      </Grid>
-      <Grid item xs={8}>
-        <Card>
-          <CardContent>
-            <DriverEnroll />
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={4}>
-        <Card>
-          <CardContent>
-            <Speedometer />
-          </CardContent>
-        </Card>
+        <DriverManager driverdata={data} vehdata={vehdata} />
       </Grid>
     </Grid>
   );
