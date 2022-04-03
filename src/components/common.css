@@ -28,3 +28,24 @@
 .containeritem {
   text-align: center;
 }
+.searchbox {
+  width: 500px;
+  margin-left: 25px !important;
+}
+.submenu {
+  display: flex;
+  align-items: center;
+}
+.carting {
+  font-size: 50px !important;
+  color: blue;
+  padding-left: 50px;
+}
+.cartingadd {
+  font-size: 30px !important;
+  color: blue;
+  padding-right: 10px;
+}
+.cartingadd:active {
+  color: greenyellow;
+}
