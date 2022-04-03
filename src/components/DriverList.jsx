@@ -6,8 +6,11 @@ export const DriverList = ({ driverdata }) => {
   const [data, setData] = useState([...driverdata]);
   const [txtSrc, setTxtSrc] = useState("");
   useEffect(() => {
-    const filtered = driverdata.filter((item) =>
-      item.fname.toUpperCase().includes(txtSrc.toUpperCase())
+    const filtered = driverdata.filter(
+      (item) =>
+        item.fname.toUpperCase().includes(txtSrc.toUpperCase()) ||
+        item.mname.toUpperCase().includes(txtSrc.toUpperCase()) ||
+        item.lname.toUpperCase().includes(txtSrc.toUpperCase())
     );
     setData([...filtered]);
   }, [txtSrc]);

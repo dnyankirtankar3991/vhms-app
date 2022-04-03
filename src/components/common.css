@@ -12,5 +12,19 @@
   background-color: gray;
 }
 .driveritem {
-  margin: 2px;
+  margin: 2px !important;
+}
+.catitem {
+  margin: 3px !important;
+}
+.proditem {
+  margin: 1px !important;
+  height: 100px;
+}
+.imgitem {
+  width: 200px;
+  height: 200px;
+}
+.containeritem {
+  text-align: center;
 }
