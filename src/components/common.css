@@ -12,7 +12,8 @@
   background-color: gray;
 }
 .driveritem {
-  margin: 2px !important;
+  margin: 5px !important;
+  padding: 15px;
 }
 .catitem {
   margin: 3px !important;

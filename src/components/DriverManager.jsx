@@ -6,8 +6,9 @@ import { DriverEnroll } from "./DriverEnroll";
 import { Speedometer } from "./Speedometer";
 import { VehicalList } from "./VehicalList";
 import { EShop } from "./EShop";
+import { Parking } from "./Parking";
 
-export const DriverManager = ({ driverdata, vehdata }) => {
+export const DriverManager = ({ driverdata, vehdata, addDriver }) => {
   const [value, setValue] = useState("dpc");
 
   return (
@@ -19,14 +20,18 @@ export const DriverManager = ({ driverdata, vehdata }) => {
         <Tab value="speedo" label="Speedometer" />
         <Tab value="vehlist" label="Vehical List" />
         <Tab value="eshop" label="e-Shop" />
+        <Tab value="park" label="Allocation" />
       </Tabs>
 
       {value === "dpc" && <DpcList driverdata={driverdata} />}
       {value === "dl" && <DriverList driverdata={driverdata} />}
-      {value === "denroll" && <DriverEnroll />}
+      {value === "denroll" && <DriverEnroll addDriver={addDriver} />}
       {value === "speedo" && <Speedometer />}
       {value === "vehlist" && <VehicalList vehdata={vehdata} />}
       {value === "eshop" && <EShop />}
+      {value === "park" && (
+        <Parking driverdata={driverdata} vehdata={vehdata} />
+      )}
     </React.Fragment>
   );
 };

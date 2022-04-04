@@ -52,15 +52,23 @@ export const Home = () => {
     },
   ]);
   const [vehdata, setVehdata] = useState([
-    "MH-26 N2517",
-    "MH-21 P3517",
-    "MH-12 2517",
+    "MH-26 N2202",
+    "MH-21 P3540",
+    "MH-12 2533",
     "AP-32 7677",
   ]);
+  const addDriver = (newdriver) => {
+    console.log(newdriver);
+    setData([newdriver, ...data]);
+  };
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <DriverManager driverdata={data} vehdata={vehdata} />
+        <DriverManager
+          driverdata={data}
+          vehdata={vehdata}
+          addDriver={addDriver}
+        />
       </Grid>
     </Grid>
   );

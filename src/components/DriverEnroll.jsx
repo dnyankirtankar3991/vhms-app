@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Grid, TextField, Button, Card, CardContent } from "@mui/material";
 
-export const DriverEnroll = () => {
+export const DriverEnroll = ({ addDriver }) => {
   const [fname, setFname] = useState("");
   const [mname, setMname] = useState("");
   const [lname, setLname] = useState("");
+  const [local, setLocal] = useState(3);
+  const [long, setLong] = useState(2);
   const [fullname, setFullname] = useState("");
   const [hno, setHno] = useState("");
   const [area, setArea] = useState("");
@@ -27,6 +29,8 @@ export const DriverEnroll = () => {
     setDl("");
     setAadhar("");
     setPan("");
+    setLocal("");
+    setLong("");
   };
 
   useEffect(() => {
@@ -137,7 +141,12 @@ export const DriverEnroll = () => {
           <Grid container>
             <Grid item xs={3}></Grid>
             <Grid item xs={3}>
-              <Button variant="contained">Save</Button>
+              <Button
+                variant="contained"
+                onClick={() => addDriver({ fname, lname, mname, local, long })}
+              >
+                Save
+              </Button>
             </Grid>
             <Grid item xs={3}>
               <Button variant="contained" onClick={handleRemove}>
