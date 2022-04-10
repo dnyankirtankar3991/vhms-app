@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Grid, Button, TextField, Card, CardContent } from "@mui/material";
 
 export const Speedometer = () => {
   const [speed, setSpeed] = useState(0);
   const [status, setStatus] = useState("lightgray");
-
+  const selectorProd = useSelector((state) => state.productReducer.prodname);
   useEffect(() => {
     if (speed > 5 && speed < 21) {
       setStatus("yellow");
@@ -19,6 +20,7 @@ export const Speedometer = () => {
   return (
     <Card>
       <CardContent>
+        <h1>{selectorProd}</h1>
         <React.Fragment>
           <Grid container>
             <Grid item xs={3}>

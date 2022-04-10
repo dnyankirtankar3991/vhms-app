@@ -26,7 +26,7 @@ export const DpcItem = ({ item }) => {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              Local Drive{" "}
+              Local Drive
               <Rating value={local} onChange={(e, val) => setLocal(val)} />
             </Grid>
             <Grid item xs={12}>

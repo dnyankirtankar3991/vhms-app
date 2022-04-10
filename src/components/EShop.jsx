@@ -8,6 +8,7 @@ import {
   TextField,
   Badge,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
@@ -17,16 +18,40 @@ export const EShop = () => {
   const [filtProducts, setFiltProducts] = useState([]);
   const [cartdata, setCartdata] = useState([]);
   const [selectedCat, setSelectedCat] = useState("All");
+  const [flg, setFlg] = useState(false);
+  const dispatch = useDispatch();
+  const selectorCategory = useSelector(
+    (state) => state.productReducer.prodname
+  );
+  const selectorProds = useSelector((state) => state.productReducer.products);
+  const selectorCatgs = useSelector((state) => state.productReducer.categories);
   const getCategories = async () => {
-    const catdata = await axios.get(
-      "https://fakestoreapi.com/products/categories"
-    );
-    setCategories([...catdata.data, "All"]);
+    if (selectorCatgs.length > 0) {
+      setCategories([...selectorCatgs]);
+    } else {
+      const catdata = await axios.get(
+        "https://fakestoreapi.com/products/categories"
+      );
+      setCategories([...catdata.data, "All"]);
+      dispatch({
+        type: "SET_CATEGORIES",
+        data: [...catdata.data, "All"],
+      });
+    }
   };
   const getProducts = async () => {
-    const proddata = await axios.get("https://fakestoreapi.com/products");
-    setProducts([...proddata.data]);
-    setFiltProducts([...proddata.data]);
+    if (selectorProds.length > 0) {
+      setProducts([...selectorProds]);
+      setFiltProducts([...selectorProds]);
+    } else {
+      const proddata = await axios.get("https://fakestoreapi.com/products");
+      setProducts([...proddata.data]);
+      setFiltProducts([...proddata.data]);
+      dispatch({
+        type: "SET_PRODUCTS",
+        data: [...proddata.data],
+      });
+    }
   };
   const handleAddToCart = (item) => {
     setCartdata([item, ...cartdata]);
@@ -40,12 +65,22 @@ export const EShop = () => {
       );
       setFiltProducts([...filtered]);
     }
+    dispatch({
+      type: "SET_NAME",
+      data: selectedCat,
+    });
   }, [selectedCat]);
   useEffect(() => {
     if (categories.length > 0) {
       getProducts();
     }
   }, [categories]);
+  useEffect(() => {
+    if (selectorCategory !== "" && !flg) {
+      setSelectedCat(selectorCategory);
+      setFlg(true);
+    }
+  }, [selectorCategory]);
   useEffect(() => {
     getCategories();
   }, []);
